@@ -6,7 +6,7 @@ source /root/sen2cor/L2A_Bashrc
 
 # Get input variables
 zipped_dir=/var/sentinel2_data/archives/"$1"
-unzipped_dir=/var/sentinel2_data/unzipped_scenes/"${1%.zip}.SAFE"
+unzipped_dir=/var/sentinel2_data/unzipped_scenes/"${1%.zip}"
 
 # Get the oupout resolution, if no resolution is set set the output resolution to 60
 outresolution="$2"
