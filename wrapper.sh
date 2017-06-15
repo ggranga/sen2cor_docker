@@ -12,7 +12,7 @@ unzipped_dir=/var/sentinel2_data/unzipped_scenes/"${1%.zip}"
 outresolution="$2"
 
 # unzip the file 
-unzip -q $zipped_dir -d /var/sentinel2_data/unzipped_scenes
+unzip -q $zipped_dir -d $unzipped_dir
 
 # Run sen2cor
 L2A_Process $unzipped_dir --resolution=$outresolution

@@ -4,7 +4,7 @@ FROM ubuntu:14.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV SEN2COR_VERSION='2.3.0' \
+ENV SEN2COR_VERSION='2.3.1' \
     ANACONDA_VERSION='4.2.0'
 
 RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list
