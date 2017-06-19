@@ -14,6 +14,22 @@ l2a:
   working_dir: /var/sentinel2_data/unzipped_scenes
   entrypoint: /wrapper.sh
 
+l2a_post:
+  build: . 
+  dockerfile: Dockerfile
+  
+  volumes:
+  - /home/lranghetti/share/git/github/ggranga/s2tsp/sen2cor_docker/data/archives:/var/sentinel2_data/archives:rw
+  - /home/lranghetti/share/git/github/ggranga/s2tsp/sen2cor_docker/data/unzipped_scenes:/var/sentinel2_data/unzipped_scenes
+  - ./wrapper_clean.sh:/wrapper_clean.sh
+
+  environment:
+  - SEN2COR_HOME=/sen2cor
+  - SEN2COR_BIN=/sen2cor
+
+  working_dir: /var/sentinel2_data/unzipped_scenes
+  entrypoint: /wrapper_clean.sh
+
 
 test_l2a:
   build: . 

@@ -17,9 +17,6 @@ unzip -q $zipped_dir -d $unzipped_dir
 # Run sen2cor
 L2A_Process $unzipped_dir --resolution=$outresolution
 
-# zip the l2a file 
-zip -r ${zipped_dir//MSIL1C/MSIL2A} ${unzipped_dir//MSIL1C/MSIL2A}/*
-
 # Delete the unzipped file after running sen2cor
-rm -r $unzipped_dir
-rm -r ${unzipped_dir//MSIL1C/MSIL2A}
+#rm -r $unzipped_dir
+
