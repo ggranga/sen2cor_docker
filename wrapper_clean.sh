@@ -10,4 +10,4 @@ unzipped_dir=/var/sentinel2_data/unzipped_scenes/"${1%.zip}"
 
 # Delete the unzipped file after running sen2cor
 rm -r $unzipped_dir
-rm -r ${unzipped_dir//MSIL1C/MSIL2A}
+rm -r `echo $unzipped_dir | sed 's/MSIL1C/MSIL2A/g;s/OPER/USER/g'`
