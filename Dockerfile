@@ -2,9 +2,12 @@
 # The objective is to run sen2cor in this docker
 FROM ubuntu:14.04
 
+# consider to pass to a docker with standalone sen2cor:
+# http://forum.step.esa.int/t/sen2cor-2-4-0-with-docker/7016
+
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV SEN2COR_VERSION='2.3.1' \
+ENV SEN2COR_VERSION='2.4.0' \
     ANACONDA_VERSION='4.2.0'
 
 RUN sed 's/main$/main universe multiverse/' -i /etc/apt/sources.list
@@ -16,7 +19,7 @@ RUN apt-get update && \
         python-dev \
         python-distribute \
         python-pip \
-        software-properties-common 
+        software-properties-common
 
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable && \
     apt-get update && \
@@ -40,7 +43,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/cond.sh && \
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN wget http://step.esa.int/thirdparties/sen2cor/${SEN2COR_VERSION}/sen2cor-${SEN2COR_VERSION}.tar.gz && \
+RUN wget http://step.esa.int/thirdparties/sen2cor/${SEN2COR_VERSION}/14_Sen2Cor_V${SEN2COR_VERSION}-Anaconda_Site_Packages/sen2cor-${SEN2COR_VERSION}.tar.gz && \
     tar -xvzf sen2cor-${SEN2COR_VERSION}.tar.gz && \
     cd sen2cor-${SEN2COR_VERSION} && \
     /bin/echo -e "y\ny\ny\n" | python setup.py install
